@@ -643,7 +643,7 @@ function getFiltered(){
 
 function renderProducts(){
   const list = getFiltered();
-  const availableCount = list.filter(p => p.status !== "Vândut").length;
+  const availableCount = list.filter(p => (p.status || "Disponibil") === "Disponibil").length;
   counter.textContent = `${availableCount} ${availableCount === 1 ? "produs disponibil" : "produse disponibile"}`;
 
   if(!list.length){
