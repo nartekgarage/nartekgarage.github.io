@@ -456,24 +456,19 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#65717f;font-size:1
   border-color:#168cff;
 }
 .cookie-settings{
-  position:fixed;
-  left:14px;
-  bottom:14px;
-  z-index:99998;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:8px;
-  padding:8px 10px;
-  background:rgba(10,14,20,.88);
-  color:#aeb9c7;
+  border:0;
+  padding:0;
+  background:transparent;
+  color:#8fa0b3;
   font:inherit;
   font-size:12px;
-  font-weight:800;
+  font-weight:700;
   cursor:pointer;
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
+  text-decoration:underline;
+  text-underline-offset:3px;
 }
 .cookie-settings[hidden]{display:none!important}
-.cookie-settings:hover{color:#fff;border-color:#168cff}
+.cookie-settings:hover{color:#fff}
 
 @media(max-width:640px){
   .cookie-banner{
@@ -559,7 +554,13 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:#65717f;font-size:1
 <footer>
   <div class="container footer-inner">
     <div class="footer-brand">NARTEK GARAGE</div>
-    <div>© 2026 Nartek Garage</div>
+    <div>© 2026 Nartek Garage
+      <div style="margin-top:6px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;align-items:center">
+        <a href="/privacy.html" style="color:#8fa0b3;font-size:12px;font-weight:700;text-decoration:none">Confidențialitate & Cookies</a>
+        <span style="color:rgba(255,255,255,.18);font-size:12px">•</span>
+        <button class="cookie-settings" id="cookieSettings" type="button" hidden>Setări cookies</button>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -800,7 +801,7 @@ fetch("/products.json", {cache:"no-store"})
   </div>
 </div>
 
-<button class="cookie-settings" id="cookieSettings" type="button" hidden>Setări cookies</button>
+
 
 
 <script>
