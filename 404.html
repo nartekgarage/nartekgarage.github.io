@@ -2,7 +2,7 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/png" href="/favicon.png">
   <title>404 | Nartek Garage</title>
@@ -121,15 +121,70 @@
       opacity:.8;
     }
 
-    @media(max-width:520px){
-      body{padding:24px 18px}
-      .brand{margin-bottom:38px}
-      .error-code{
-        letter-spacing:-6px;
-        margin-bottom:28px;
+    @media(max-width:600px){
+      body{
+        min-height:100svh;
+        padding:22px 18px;
+        align-items:center;
       }
-      p{font-size:15px}
-      .btn{width:100%;max-width:290px}
+
+      .wrap{
+        width:100%;
+        max-width:430px;
+      }
+
+      .brand{
+        font-size:15px;
+        letter-spacing:1.6px;
+        margin-bottom:30px;
+      }
+
+      .error-code{
+        font-size:clamp(86px,30vw,125px);
+        line-height:.86;
+        letter-spacing:-4px;
+        margin-bottom:26px;
+        -webkit-text-stroke:1.5px rgba(85,176,255,.85);
+      }
+
+      .kicker{
+        font-size:10px;
+        letter-spacing:2px;
+        margin-bottom:10px;
+      }
+
+      h1{
+        font-size:clamp(28px,8vw,36px);
+        line-height:1.08;
+        margin-bottom:14px;
+        padding:0 4px;
+      }
+
+      p{
+        max-width:360px;
+        font-size:14px;
+        line-height:1.6;
+        padding:0 4px;
+      }
+
+      .actions{margin-top:26px}
+
+      .btn{
+        width:100%;
+        max-width:300px;
+        min-height:48px;
+        padding:13px 18px;
+      }
+
+      .line{margin-top:30px}
+    }
+
+    @media(max-width:360px){
+      body{padding-left:14px;padding-right:14px}
+      .brand{margin-bottom:24px}
+      .error-code{font-size:88px;margin-bottom:22px}
+      h1{font-size:26px}
+      p{font-size:13.5px}
     }
   </style>
 </head>
