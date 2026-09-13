@@ -615,7 +615,21 @@ function contactUrl(product){
 }
 
 function renderFilters(){
-  const categories = ["Toate", ...new Set(products.map(p => p.category).filter(Boolean))];
+  const preferredOrder = [
+    "Componente PC",
+    "Laptop",
+    "Console",
+    "Periferice",
+    "Jocuri PlayStation",
+    "Jocuri Xbox",
+    "Diverse"
+  ];
+
+  const presentCategories = [...new Set(products.map(p => p.category).filter(Boolean))];
+  const orderedCategories = preferredOrder.filter(cat => presentCategories.includes(cat));
+  const extraCategories = presentCategories.filter(cat => !preferredOrder.includes(cat));
+  const categories = ["Toate", ...orderedCategories, ...extraCategories];
+
   filtersBox.innerHTML = categories.map(cat => `
     <button class="filter ${cat === currentCategory ? "active" : ""}" data-cat="${esc(cat)}">
       ${esc(cat)}
