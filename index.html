@@ -671,6 +671,7 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   const consent = getConsent();
 
   if (consent === 'accepted') {
+    window['ga-disable-' + GA_ID] = false;
     loadAnalytics();
     hideBanner();
   } else if (consent === 'rejected') {
@@ -681,13 +682,70 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
   acceptBtn.addEventListener('click', function() {
     setConsent('accepted');
+
+    // Dacă utilizatorul a refuzat anterior în aceeași sesiune,
+    // anulăm explicit blocarea înainte de a porni din nou Analytics.
+    window['ga-disable-' + GA_ID] = false;
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'granted'
+      });
+    }
+
     loadAnalytics();
     hideBanner();
   });
 
+  function deleteAnalyticsCookies() {
+    const cookieNames = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('=')[0].trim())
+      .filter(name =>
+        name === '_ga' ||
+        name.startsWith('_ga_') ||
+        name === '_gid' ||
+        name.startsWith('_gat')
+      );
+
+    const hostname = location.hostname;
+    const domains = ['', hostname, '.' + hostname];
+
+    cookieNames.forEach(name => {
+      domains.forEach(domain => {
+        const domainPart = domain ? '; domain=' + domain : '';
+        document.cookie = name + '=; Max-Age=0; path=/' + domainPart + '; SameSite=Lax';
+      });
+    });
+  }
+
+  function disableAnalyticsNow() {
+    window['ga-disable-' + GA_ID] = true;
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'denied'
+      });
+    }
+
+    deleteAnalyticsCookies();
+
+    const gaScript = document.querySelector('script[data-nartek-ga]');
+    if (gaScript) gaScript.remove();
+
+    analyticsLoaded = false;
+  }
+
   rejectBtn.addEventListener('click', function() {
+    const wasActive = analyticsLoaded || !!document.querySelector('script[data-nartek-ga]');
+
     setConsent('rejected');
+    disableAnalyticsNow();
     hideBanner();
+
+    if (wasActive) {
+      location.reload();
+    }
   });
 
   settingsBtn.addEventListener('click', function() {
