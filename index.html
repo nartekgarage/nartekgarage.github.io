@@ -77,7 +77,22 @@ nav{
 .menu{display:none;font-size:25px;cursor:pointer}
 
 /* HERO */
-.hero{min-height:calc(100vh - 74px);display:flex;align-items:center;position:relative;overflow:hidden}
+.hero{
+    min-height:calc(100vh - 74px);
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(90deg,
+        rgba(5,8,12,.98) 0%,
+        rgba(5,8,12,.94) 30%,
+        rgba(5,8,12,.78) 50%,
+        rgba(5,8,12,.46) 72%,
+        rgba(5,8,12,.24) 100%
+      ),
+      url('/images/site/nartek-garage-hero-bg-1920.webp') center/cover no-repeat;
+}
 .hero::before{
     content:"";position:absolute;width:520px;height:520px;border-radius:50%;
     right:-180px;top:80px;background:rgba(22,140,255,.12);filter:blur(80px);
