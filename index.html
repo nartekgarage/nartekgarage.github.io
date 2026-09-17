@@ -161,6 +161,20 @@ section{padding:100px 0}
 .content-card h3{font-size:30px;margin:8px 0}
 .content-card p{color:var(--muted);max-width:480px}
 
+.discord-card{
+    background:
+      linear-gradient(180deg,rgba(7,9,12,.12),rgba(7,9,12,.82)),
+      url('/images/site/discord-card-nartek.webp') center/cover no-repeat;
+}
+.discord-card::before{
+    background:linear-gradient(135deg,rgba(22,140,255,.16),rgba(0,0,0,.12) 55%,rgba(0,0,0,.34));
+}
+.discord-card .tag,
+.discord-card h3,
+.discord-card p{
+    text-shadow:0 2px 14px rgba(0,0,0,.65);
+}
+
 /* CTA */
 .cta{
     padding:70px 0;
@@ -531,7 +545,7 @@ footer{padding:50px 0 30px}
         <p>Gameplay și tot ce se întâmplă în lumea Nartek Garage</p>
       </a>
 
-      <a class="content-card reveal" href="https://discord.com/invite/bJgh5FYcaA" target="_blank" rel="noopener">
+      <a class="content-card discord-card reveal" href="https://discord.com/invite/bJgh5FYcaA" target="_blank" rel="noopener">
         <span class="tag">DISCORD</span>
         <h3>Intră pe Discord →</h3>
         <p>Gaming, discuții, ajutor și comunitatea Nartek Garage</p>
