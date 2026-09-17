@@ -440,7 +440,7 @@ footer{padding:50px 0 30px}
 
 <nav>
   <div class="container nav-inner">
-    <a class="logo" href="#home">NARTEK <span>GARAGE</span></a>
+    <a class="logo" href="#" id="topLogo">NARTEK <span>GARAGE</span></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">HOME</a></li>
       <li><a href="#garage">GARAGE</a></li>
@@ -813,6 +813,16 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     showBanner();
   });
 })();
+
+const topLogo = document.getElementById("topLogo");
+if(topLogo){
+  topLogo.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  });
+}
+
 </script>
 
 </body>
