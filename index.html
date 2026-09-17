@@ -165,7 +165,13 @@ section{padding:100px 0}
 .price-note{display:inline-block;margin-top:18px;color:var(--blue2);font-size:12px;font-weight:800}
 
 /* PROCESS */
-.process{background:rgba(255,255,255,.018);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.process{
+    background:
+      linear-gradient(rgba(7,9,12,.80),rgba(7,9,12,.86)),
+      url('/images/site/process-loop-texture-1920.webp') top center / 960px 960px repeat;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line)
+}
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .step{padding:22px;border-left:2px solid rgba(22,140,255,.35)}
 .step-number{color:var(--blue);font-weight:1000;font-size:13px}
